@@ -1,73 +1,136 @@
-import { View, Text, StyleSheet} from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+import * as React from "react";
+import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
 
-export default function HomeScreen() {
+const Home = () => {
   return (
     <View style={styles.container}>
-      <View style={styles.circle}>
-        <LinearGradient
-          colors={['#ffffff', 'purple']}
-          style={styles.gradient}
-          start={{ x: 0.5, y: 0 }}
-          end={{ x: 0.5, y: 1 }}
-        />
+      <View style={styles.scrollContent}>
+        {/* Greeting Section */}
+        <View style={styles.greetingContainer}>
+          <Image style={styles.profileIcon} source={require('./assets/Ellipse_4.png')} />
+          <Text style={styles.greetingText}>
+            Good morning, <Text style={styles.boldText}>First Last</Text>.
+          </Text>
+        </View>
+
+        {/* Card Section */}
+        <View style={[styles.card, styles.shadow]}>
+          <Image style={styles.sunIcon} source={require('./assets/Sun.png')} />
+          <Text style={styles.iu}>400 IU</Text>
+          <Text style={styles.statusText}>
+            You are <Text style={styles.boldText}>Low</Text> on Vitamin D.
+          </Text>
+        </View>
+
+        {/* Vitamin D Range Text */}
+        <Text style={styles.rangeText}>
+          Average Vitamin D levels range around <Text style={styles.boldText}>600 IU</Text>.
+        </Text>
+
+        {/* ON Button */}
+        <TouchableOpacity style={[styles.button, styles.shadow]}>
+          <Text style={styles.buttonText}>ON</Text>
+          <View style={styles.buttonCircle} />
+        </TouchableOpacity>
       </View>
-      <Text style={styles.levelText}>20 ng/mL</Text>
-      <Text style={styles.statusText}>You are <Text style={styles.boldText}>Low</Text> on Vitamin D.</Text>
-      <View style={styles.separator} />
-      <Text style={styles.infoText}>Average Vitamin D levels are from 50 - 125 ng/mL.</Text>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#e6f0f8', // Light blue background
-    padding: 20,
+    backgroundColor: "#faf8ed",
   },
-  circle: {
-    width: 120,
-    height: 120,
-    borderRadius: 60,
-    borderWidth: 6,
-    borderColor: '#16203b', // Dark blue border
-    justifyContent: 'flex-end',
-    overflow: 'hidden',
-    alignItems: 'center',
-    backgroundColor: '#fff',
+  scrollContent: {
+    flexGrow: 1,
+    alignItems: "center",
+    paddingVertical: 90,
+    paddingHorizontal: 30,
+    height: "100%"
   },
-  gradient: {
-    width: '100%',
-    height: '50%',
-    position: 'absolute',
-    bottom: 0,
+  greetingContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 40,
   },
-  levelText: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#16203b', // Dark blue
-    marginTop: 16,
+  profileIcon: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    marginRight: 15,
+  },
+  greetingText: {
+    fontSize: 20,
+    color: "#1e0e00",
+    fontFamily: "Futura",
+  },
+  boldText: {
+    fontWeight: "700",
+  },
+  card: {
+    width: "100%",
+    backgroundColor: "#faf8ed",
+    borderRadius: 25,
+    borderColor: "#ffaa00",
+    borderWidth: 5,
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 30,
+    paddingHorizontal: 20,
+    marginBottom: 30,
+    aspectRatio: 1,
+  },
+  shadow: {
+    shadowColor: "rgba(0, 0, 0, 0.25)",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 4,
+  },
+  sunIcon: {
+    width: 160,
+    height: 160,
+    marginBottom: 15,
+  },
+  iu: {
+    fontSize: 28,
+    fontWeight: "700",
+    color: "#1e0e00",
+    marginBottom: 10,
   },
   statusText: {
     fontSize: 16,
-    color: '#16203b',
-    marginTop: 8,
+    color: "#1e0e00",
+    textAlign: "center",
   },
-  boldText: {
-    fontWeight: 'bold',
+  rangeText: {
+    fontSize: 16,
+    color: "#1e0e00",
+    textAlign: "center",
+    marginVertical: 30,
+    width: "90%",
   },
-  separator: {
-    width: '80%',
-    height: 1,
-    backgroundColor: '#b0c4de', // Light grayish blue
-    marginVertical: 16,
+  button: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#ffaa00",
+    borderRadius: 25,
+    paddingVertical: 15,
+    paddingHorizontal: 30,
   },
-  infoText: {
-    fontSize: 14,
-    color: '#16203b',
-    textAlign: 'center',
+  buttonText: {
+    fontSize: 18,
+    fontWeight: "700",
+    color: "#1e0e00",
+    marginRight: 10,
+  },
+  buttonCircle: {
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+    backgroundColor: "#fff",
   },
 });
+
+export default Home;
