@@ -45,6 +45,14 @@ export default function RootLayout() {
             headerShown: false, // Optional, can modify header visibility
           }}
         />
+
+        {/* Home */}
+        <Stack.Screen
+          name="home"
+          options={{
+            headerShown: false, // Optional, can modify header visibility
+          }}
+        />
         
         {/* Not Found Page */}
         <Stack.Screen name="+not-found" />

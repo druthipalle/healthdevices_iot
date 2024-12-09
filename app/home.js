@@ -1,5 +1,5 @@
 import * as React from "react";
-import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity, Image } from "react-native";
 
 const Home = () => {
   // State to track whether the button is ON or OFF
@@ -15,7 +15,7 @@ const Home = () => {
       <View style={styles.scrollContent}>
         {/* Greeting Section */}
         <View style={styles.greetingContainer}>
-          <Image style={styles.profileIcon} source={require('./assets/Ellipse_4.png')} />
+          <Image style={styles.profileIcon} source={require('./Ellipse_5.png')} />
           <Text style={styles.greetingText}>
             Good morning, <Text style={styles.boldText}>First Last</Text>.
           </Text>
@@ -23,7 +23,7 @@ const Home = () => {
 
         {/* Card Section */}
         <View style={[styles.card, styles.shadow]}>
-          <Image style={styles.sunIcon} source={require('./assets/Sun.png')} />
+          <Image style={styles.sunIcon} source={require('./Sun2.png')} />
           <Text style={styles.iu}>400 IU</Text>
           <Text style={styles.statusText}>
             You are <Text style={styles.boldText}>Low</Text> on Vitamin D.
@@ -37,7 +37,7 @@ const Home = () => {
 
         {/* ON/OFF Button */}
         <TouchableOpacity 
-          style={[styles.button, styles.shadow, { backgroundColor: isOn ? '#ffaa00' : '#d9d9d9' }]} // Change color based on state
+          style={[styles.button, styles.shadow, { backgroundColor: isOn ? '#ffaa00' : '#d9d9d9' }]}
           onPress={toggleButton}
         >
           <Text style={[styles.buttonText, { color: isOn ? '#1e0e00' : '#aaaaaa' }]}>
@@ -46,7 +46,7 @@ const Home = () => {
           <View 
             style={[
               styles.buttonCircle, 
-              { backgroundColor: isOn ? '#fff' : '#1e0e00' } // Change circle color based on state
+              { backgroundColor: isOn ? '#fff' : '#1e0e00' }
             ]}
           />
         </TouchableOpacity>
@@ -77,6 +77,9 @@ const styles = StyleSheet.create({
     height: 60,
     borderRadius: 30,
     marginRight: 15,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#f5f5f5',
   },
   greetingText: {
     fontSize: 20,
@@ -105,11 +108,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 4,
     elevation: 4,
-  },
-  sunIcon: {
-    width: 160,
-    height: 160,
-    marginBottom: 15,
   },
   iu: {
     fontSize: 28,
