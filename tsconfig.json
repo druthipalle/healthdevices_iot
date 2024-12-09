@@ -12,6 +12,10 @@
     "**/*.ts",
     "**/*.tsx",
     ".expo/types/**/*.ts",
-    "expo-env.d.ts"
+    "expo-env.d.ts",
+    "app/(tabs)/profile.js",
+    "app/(tabs)/personal-details.js",
+    "app/daily-tracking.js",
+    "app/(tabs)/calendar.tsx"
   ]
 }

@@ -2,6 +2,14 @@ import * as React from "react";
 import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
 
 const Home = () => {
+  // State to track whether the button is ON or OFF
+  const [isOn, setIsOn] = React.useState(true); // Default to "ON"
+
+  // Function to toggle the button state
+  const toggleButton = () => {
+    setIsOn(!isOn); // Toggle between ON and OFF
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.scrollContent}>
@@ -27,10 +35,20 @@ const Home = () => {
           Average Vitamin D levels range around <Text style={styles.boldText}>600 IU</Text>.
         </Text>
 
-        {/* ON Button */}
-        <TouchableOpacity style={[styles.button, styles.shadow]}>
-          <Text style={styles.buttonText}>ON</Text>
-          <View style={styles.buttonCircle} />
+        {/* ON/OFF Button */}
+        <TouchableOpacity 
+          style={[styles.button, styles.shadow, { backgroundColor: isOn ? '#ffaa00' : '#d9d9d9' }]} // Change color based on state
+          onPress={toggleButton}
+        >
+          <Text style={[styles.buttonText, { color: isOn ? '#1e0e00' : '#aaaaaa' }]}>
+            {isOn ? 'ON' : 'OFF'}
+          </Text>
+          <View 
+            style={[
+              styles.buttonCircle, 
+              { backgroundColor: isOn ? '#fff' : '#1e0e00' } // Change circle color based on state
+            ]}
+          />
         </TouchableOpacity>
       </View>
     </View>
@@ -47,7 +65,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingVertical: 90,
     paddingHorizontal: 30,
-    height: "100%"
+    height: "100%",
   },
   greetingContainer: {
     flexDirection: "row",
@@ -114,7 +132,6 @@ const styles = StyleSheet.create({
   button: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#ffaa00",
     borderRadius: 25,
     paddingVertical: 15,
     paddingHorizontal: 30,
@@ -122,14 +139,12 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 18,
     fontWeight: "700",
-    color: "#1e0e00",
     marginRight: 10,
   },
   buttonCircle: {
     width: 24,
     height: 24,
     borderRadius: 12,
-    backgroundColor: "#fff",
   },
 });
 
